@@ -18,36 +18,41 @@ class Login extends Component {
         this.setState({ password: event.target.value });
     };
 
+    handleSubmit = (event) => {
+        event.preventDefault();
+        alert('Login submitted: ' + this.state.username + ', ' + this.state.password);
+    }
+
     render() {
         return (
-            <form className='form'>
+            <div className="login-form">
+            <form onSubmit={this.handleSubmit} className="form">
                 <h1 className='title'>Login</h1>
-                <div className='form-items'>
-                    <div className='form-item'>
+                    <div className='form-group'>
                         <input
                             name="email"
                             type="text"
                             placeholder="your-email@email.com"
                             onChange={this.handleChangeUsername}
                             value={this.state.username}
-                            className='input' />
+                            className='form-control' />
                     </div>
-                    <div className='form-item'>
+                    <div className='form-group'>
                         <input
                             name="password"
                             type="password"
                             placeholder="Enter your password"
                             onChange={this.handleChangePassword}
                             value={this.state.password}
-                            className='input'
+                            className='form-control'
                         />
                     </div>
-                </div>
 
-                <button type="submit" >
+                <button type="submit" className="btn btn-primary" >
                     Login
                 </button>
             </form>
+            </div>
         );
     }
 }
